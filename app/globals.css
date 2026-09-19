@@ -1,0 +1,87 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  color-scheme: light;
+  --ink: #241b1b;
+  --red: #9f2028;
+  --muted-red: #b76b6d;
+  --line: #eadbda;
+  --paper: #fffdfc;
+}
+
+* { box-sizing: border-box; }
+html { background: #fff; }
+body { margin: 0; background: #fff; color: var(--ink); }
+button { font: inherit; }
+
+.memory-page {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(3rem, 8vw, 6.75rem) clamp(1.25rem, 6vw, 6rem) 2.5rem;
+  background: radial-gradient(circle at 50% 20%, #fff 0, #fff 56%, #fffaf9 100%);
+  text-align: center;
+}
+
+.intro { position: relative; z-index: 1; max-width: 760px; margin: 0 auto clamp(2.5rem, 6vw, 4.75rem); }
+.eyebrow { margin: 0 0 1.1rem; color: var(--muted-red); font: 500 0.65rem/1.2 Arial, sans-serif; letter-spacing: .28em; text-transform: uppercase; }
+h1 { margin: 0; color: var(--red); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(2.25rem, 5.4vw, 4.7rem); font-weight: 400; letter-spacing: -.045em; line-height: .98; }
+.intro-copy { margin: 1.25rem 0 0; color: #8b7777; font: 400 .9rem/1.5 Arial, sans-serif; letter-spacing: .07em; }
+
+.months-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.75rem, 2.2vw, 1.65rem); max-width: 1220px; margin: 0 auto; }
+.month-card { position: relative; min-height: clamp(300px, 39vw, 500px); overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); color: var(--red); cursor: pointer; padding: 0; text-align: center; transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease; }
+.month-card:hover, .month-card:focus-visible { transform: translateY(-6px); border-color: #c89595; box-shadow: 0 18px 38px rgba(102, 34, 35, .12); outline: none; }
+.month-card:focus-visible { box-shadow: 0 0 0 3px #f4d6d6, 0 18px 38px rgba(102, 34, 35, .12); }
+.card-photo, .card-wash { position: absolute; inset: 0; }
+.card-photo { background-position: center; background-size: cover; filter: blur(13px); transform: scale(1.12); transition: filter .9s ease, transform .9s ease; }
+.is-revealed .card-photo { filter: blur(0); transform: scale(1.03); }
+.card-wash { background: linear-gradient(180deg, rgba(255,252,251,.93) 0%, rgba(255,252,251,.56) 48%, rgba(87,23,24,.68) 100%); transition: background .7s ease; }
+.is-revealed .card-wash { background: linear-gradient(180deg, rgba(255,252,251,.72) 0%, rgba(255,252,251,.12) 43%, rgba(87,23,24,.72) 100%); }
+.card-content { position: relative; display: flex; height: 100%; min-height: inherit; flex-direction: column; align-items: center; padding: clamp(1.2rem, 2.6vw, 2.2rem) 1rem 1.6rem; }
+.month-label { display: flex; flex-direction: column; gap: .3rem; }
+.month-name { font: 400 clamp(1.15rem, 2vw, 1.65rem)/1.1 Georgia, serif; letter-spacing: .03em; }
+.month-year { font: 500 .63rem/1 Arial, sans-serif; letter-spacing: .3em; margin-left: .3em; opacity: .7; }
+.card-rule { width: 34px; height: 1px; margin: 1.25rem 0 auto; background: currentColor; opacity: .35; }
+.quiet-question, .event-copy { font-family: Georgia, serif; font-weight: 400; }
+.quiet-question { margin-top: 1rem; font-size: clamp(3.5rem, 7vw, 6rem); line-height: 1; }
+.quiet-note, .tap-copy { margin-top: auto; font: 500 .57rem/1 Arial, sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+.quiet-note { color: #bca4a4; }
+.lock-wrap { display: grid; place-items: center; margin: 1.5rem 0 .8rem; color: var(--red); }
+.lock-icon { width: 38px; height: 42px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }
+.lock-shackle { transition: d .45s ease; }
+.event-copy { max-width: 150px; color: #fff; font-size: clamp(1.2rem, 2.4vw, 1.75rem); line-height: 1.12; }
+.tap-copy { margin-top: 1rem; color: rgba(255,255,255,.76); }
+.is-reveal:not(.is-revealed) .event-copy { color: var(--red); font-size: clamp(3.5rem, 7vw, 6rem); line-height: 1; }
+.is-reveal:not(.is-revealed) .lock-wrap { color: var(--red); }
+
+.footer-note { position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; gap: 1rem; margin: clamp(2.6rem, 6vw, 4.5rem) auto 0; color: #b99393; font: 400 .62rem/1 Arial, sans-serif; letter-spacing: .22em; text-transform: uppercase; }
+.footer-line { width: clamp(35px, 7vw, 90px); height: 1px; background: var(--line); }
+.page-decoration { position: absolute; border: 1px solid #f7e9e8; border-radius: 50%; pointer-events: none; }
+.page-decoration-left { width: 460px; height: 460px; left: -330px; top: 22%; }
+.page-decoration-right { width: 380px; height: 380px; right: -275px; bottom: 10%; }
+
+@media (max-width: 720px) {
+  .memory-page { padding-top: 3.5rem; }
+  .months-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 520px; gap: .75rem; }
+  .month-card { min-height: 270px; }
+  .card-content { padding: 1.15rem .65rem 1.25rem; }
+  .card-rule { margin-top: 1rem; }
+  .footer-note { gap: .6rem; letter-spacing: .14em; }
+}
+
+@media (max-width: 380px) {
+  .month-card { min-height: 245px; }
+  .month-name { font-size: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@layer base {
+  * { border-color: var(--line); }
+}
