@@ -16,7 +16,7 @@ const months = [
     name: 'Avril',
     year: '2027',
     kind: 'reveal',
-    image: '/images/souvenir-elisa.png',
+    image: '/images/souvenir-elisa.jpg',
     event: 'Weekend à Paris pour nos 5 ans feat. Olivia Rodrigo',
   },
 ]
