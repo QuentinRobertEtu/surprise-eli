@@ -8,7 +8,7 @@ const months = [
     year: '2027',
     kind: 'reveal',
     image: '/images/mariage-elisa.png',
-    event: 'Notre mariage',
+    event: 'Le mariage des Robert',
   },
   { name: 'Février', year: '2027', kind: 'plain' },
   { name: 'Mars', year: '2027', kind: 'plain' },
